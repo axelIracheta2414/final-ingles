@@ -132,6 +132,37 @@ mark{background:#fff3a3;color:#000;padding:0 3px;border-radius:4px}[data-theme=d
 .toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:12px;opacity:0;transition:.3s;z-index:50;max-width:90vw}.toast.show{opacity:1;transform:translate(-50%,0)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
+/* ===== SPRINT 60 MINUTOS (RINDO MAÑANA) ===== */
+.sprint-hero{background:linear-gradient(135deg,#e03131,#3b5bdb);color:#fff;border:0;padding:24px;border-radius:18px}
+.sprint-hero .badge{background:rgba(255,255,255,.25);color:#fff;font-size:.85rem;padding:4px 12px;margin-bottom:8px}
+.sprint-hero h1{font-size:1.9rem;margin:.2em 0}
+.sprint-hero p{color:#f1f3f9;max-width:680px;font-size:1.05rem}
+.sprint-timer-card{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.sprint-clock{font-size:3.2rem;font-weight:900;font-variant-numeric:tabular-nums;color:var(--brand);letter-spacing:-1px}
+.sprint-clock.running{color:var(--good)}
+.sprint-clock.alert{color:var(--bad);animation:pulse 1s infinite}
+.sprint-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
+.sstep{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.sstep.active{border-color:var(--brand);box-shadow:0 0 0 2px var(--brand2)}
+.sstep-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sstep-num{font-weight:900;font-size:1.4rem;color:var(--brand)}
+.sstep-time{font-size:.78rem;font-weight:700;background:var(--chip);color:var(--muted);padding:3px 9px;border-radius:99px}
+.sstep h3{margin:4px 0 6px;font-size:1.05rem}
+.sstep p{margin:0 0 12px;font-size:.88rem;color:var(--muted);flex:1}
+.trap-card{margin-bottom:12px;border-radius:14px;border:1px solid var(--line);overflow:hidden;background:var(--card)}
+.trap-card summary{padding:14px 16px;cursor:pointer;font-weight:700;display:flex;gap:10px;align-items:center}
+.trap-body{padding:12px 16px 18px;border-top:1px solid var(--line);background:var(--bg)}
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+@media(max-width:680px){.trap-grid{grid-template-columns:1fr}}
+.trap-bad{background:var(--badbg);border:1px solid var(--bad);border-radius:10px;padding:10px 12px;color:var(--bad);font-size:.92rem}
+.trap-ok{background:var(--goodbg);border:1px solid var(--good);border-radius:10px;padding:10px 12px;color:var(--good);font-size:.92rem}
+.trap-bad b,.trap-ok b{display:block;margin-bottom:4px}
+.trap-tip{background:var(--chip);border-left:4px solid var(--warn);padding:8px 12px;border-radius:4px 10px 10px 4px;font-size:.88rem;margin-top:10px}
+.tpl-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0}
+.tpl-box h4{margin:0 0 4px;display:flex;align-items:center;justify-content:space-between}
+.tpl-box p{font-size:.92rem;margin:6px 0}
+.tpl-quote{font-style:italic;background:var(--bg);border-left:3px solid var(--brand);padding:8px 12px;border-radius:0 8px 8px 0;margin:8px 0;font-size:.9rem}
+
 
 /* ===== Optimización para smartphones ===== */
 html{-webkit-text-size-adjust:100%}

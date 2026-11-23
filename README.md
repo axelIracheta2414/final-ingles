@@ -2,7 +2,20 @@
 
 Aplicación web interactiva, moderna y optimizada para smartphones y desktop, diseñada para preparar el examen final de inglés (**ADULTS A2 II - Speak Mendoza**).
 
-## 🚀 Características
+---
+
+## ⚡ MODO SPRINT 60 MINUTOS (RINDO MAÑANA)
+
+Preparado especialmente para un repaso intensivo de **1 hora** enfocado 100% en aprobar el **Examen Escrito**:
+
+1. **Minutos 00–15 · Cheat Sheet (8 Reglas & Trampas Fijas):** Las trampas gramaticales y de vocabulario que más se cobran en el examen (`didn't + infinitivo`, `Past Simple vs Present Perfect con fecha`, `comparativos vs superlativos`, `las 4 formas de futuro`, `prohibida doble negación en pronombres indefinidos`, `preposiciones de viaje` y los `25 verbos irregulares clave`).
+2. **Minutos 15–35 · 30 Preguntas de Alto Impacto:** Sesión guiada con las 30 preguntas de examen más representativas con retroalimentación explicativa inmediata.
+3. **Minutos 35–50 · 3 Plantillas Salvavidas de Writing (*A First-Time Experience*):** Plantillas de 75-85 palabras (*Travelling alone*, *Trying sushi/new food*, *Driving a car*) con todos los conectores (*First, Then, Suddenly, However, Finally, because, so*) y carga en un clic al editor con checklist automático.
+4. **Minutos 50–60 · Mini-Simulacro Exprés (15 min):** Examen cronometrado de 15 preguntas + Writing para validar tu puntaje antes de rendir.
+
+---
+
+## 🚀 Características Generales
 
 - **Fase 1 (Examen Escrito):** Modo intensivo de gramática, vocabulario y taller guiado de *Writing*.
 - **Fase 2 (Examen Oral):** Entrenador oral con preguntas por unidad, temporizador, banco de *fillers* y práctica con síntesis y reconocimiento de voz (Web Speech API).
@@ -11,7 +24,7 @@ Aplicación web interactiva, moderna y optimizada para smartphones y desktop, di
   - **Spaced Repetition (SRS):** Sistema Leitner de 5 cajas guardado en `localStorage`.
   - **Interleaving:** Práctica intercalada con retroalimentación inmediata y explicaciones.
 - **Taller de Writing:** Estructura paso a paso para *a first-time experience*, banco clickeable de *linking words*, contador de palabras y checklist de autoevaluación.
-- **Simulador de Examen:** Examen cronometrado (Grammar + Vocabulary + Writing) con desglose de puntaje sobre 100 y revisión de errores.
+- **Simulador de Examen:** Examen cronometrado (Grammar + Vocabulary + Writing) con desglose de puntaje sobre 100 y revisión de errores (opciones de 15, 30, 45 y 60 min).
 - **Diseño & PWA:**
   - Optimizado para celulares (botones táctiles de 44px+, navegación inferior con safe-area).
   - Soporte de modo oscuro / claro.

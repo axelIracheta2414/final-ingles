@@ -488,6 +488,121 @@
     { id: "p2d6", phase: 2, day: 6, text: "Simulacro oral mixto + repaso final", link: "#/oral?mode=sim" }
   ];
 
+  /* ---------- SPRINT 60 MINUTOS (EXAMEN ESCRITO MAÑANA) ---------- */
+  D.sprint = {
+    steps: [
+      { num: "01", min: "15 min", title: "Fórmulas & 8 Trampas Clave del Examen", desc: "Reglas de oro que definen el 90% de los puntos en Grammar y Vocabulary.", link: "#traps" },
+      { num: "02", min: "20 min", title: "Entrenamiento de Alto Impacto (30 Preguntas)", desc: "Las 30 preguntas con formato real que más se repiten en el examen.", link: "#/practice?sprint=1" },
+      { num: "03", min: "15 min", title: "Plantillas Salvavidas de Writing", desc: "Elegí una de las 3 plantillas aprobadas, cargala en el editor y memorizá los conectores.", link: "#/writing" },
+      { num: "04", min: "10 min", title: "Mini-Simulacro Exprés (15 min)", desc: "Examen rápido de 15 preguntas + writing para confirmar que estás listo antes de rendir.", link: "#/exam?quick=1" }
+    ],
+    traps: [
+      {
+        num: 1,
+        title: "Simple Past: didn't y did + INFINITIVO",
+        rule: "Con el auxiliar didn't o en preguntas con Did, el verbo principal SIEMPRE vuelve al infinitivo. Nunca lleva -ed ni forma pasada.",
+        bad: "I didn't went to school / Did she bought that car?",
+        ok: "I didn't go to school / Did she buy that car?",
+        tip: "⚠️ Ojo con 'be': was / were NO usan did (Where were you? / She wasn't at work)."
+      },
+      {
+        num: 2,
+        title: "Present Perfect vs Simple Past (¿Cuándo va cada uno?)",
+        rule: "Si la oración dice CUÁNDO ocurrió (in 2019, yesterday, last week, 3 days ago, when I was 10) = Past Simple. Si habla de EXPERIENCIA SIN FECHA (ever, never, before, twice, in my life) = Present Perfect.",
+        bad: "I have visited Rome in 2019 / Did you ever try sushi? (como experiencia)",
+        ok: "I visited Rome in 2019 / Have you ever tried sushi?",
+        tip: "⚠️ been vs gone: 'has been to' = fue y volvió. 'has gone to' = se fue y sigue allá."
+      },
+      {
+        num: 3,
+        title: "Comparativos y Superlativos (Sin inventar palabras)",
+        rule: "Adjetivos cortos (1 sílaba): -er than / the -est (hotter than, the coldest). Terminados en -y: -ier than (windier than, easier than). Largos: more ... than / the most ... (more dangerous than). ¡NUNCA 'more easier' ni 'older that'!",
+        bad: "English is more easy / Your PC is older that mine / the baddest day",
+        ok: "English is easier / Your PC is older than mine / the worst day",
+        tip: "⚠️ Irregulares clave: good → better → the best | bad → worse → the worst | far → further → the furthest. Frases fijas: the same as, similar to, different from."
+      },
+      {
+        num: 4,
+        title: "Las 4 Formas de Futuro (Identificá la intención)",
+        rule: "1) Present Continuous: citas fijas o arreglos con otras personas u horarios (I'm meeting my boss tomorrow at 3). 2) be going to: planes e intenciones personales (I'm going to look for a job). 3) will / 'll: decisiones en el momento u ofrecimientos espontáneos (I'll have the steak / I'll help you). 4) Shall I / Shall we?: para ofrecer ayuda o proponer planes (Shall I carry that?).",
+        bad: "We landing in 5 minutes / I'm going to go to the park",
+        ok: "We're landing in 5 minutes / I'm going to the park",
+        tip: "⚠️ Con el verbo 'go' no se dice 'going to go', se dice 'I'm going to the park'."
+      },
+      {
+        num: 5,
+        title: "Pronombres Indefinidos: ¡Prohibida la doble negación!",
+        rule: "Con verbo negativo (didn't, isn't, haven't) se usa ANY- (anyone, anything, anywhere). Las palabras con NO- (nobody, nothing, nowhere) ya son negativas, van con verbo AFIRMATIVO. Everyone/Everybody lleva verbo en SINGULAR.",
+        bad: "I didn't see nobody / Everyone are happy / There isn't nothing",
+        ok: "I didn't see anybody / Nobody knows / Everyone is happy / There is nothing",
+        tip: "⚠️ Para ofrecer algo amablemente se usa SOME-: 'Would you like something to drink?'"
+      },
+      {
+        num: 6,
+        title: "Time Phrases del Pasado (Preposiciones exactas)",
+        rule: "all my life / all day (toda mi vida/día) · for three years (duración) · from 2015 to 2020 / from 4 a.m. to 10 p.m. · before breakfast / before I started · two years later (dos años después) · When I was nineteen...",
+        bad: "She worked for 4 a.m. to 10 p.m. / I lived in Spain since 3 years",
+        ok: "She worked from 4 a.m. to 10 p.m. / I lived in Spain for 3 years",
+        tip: "⚠️ 'from ... to ...' marca principio y fin. 'for' marca cuántos años/días duró."
+      },
+      {
+        num: 7,
+        title: "Travel Vocabulary: trip vs journey vs travel",
+        rule: "trip = la visita completa (ida, estadía y vuelta: a business trip, a weekend trip). journey = el trayecto o recorrido de un punto A al punto B (a five-hour journey by bus). travel = sustantivo incontable de la actividad general (NUNCA 'a travel').",
+        bad: "We went on a travel to Amsterdam / How was your travel?",
+        ok: "We went on a trip to Amsterdam / How was your journey?",
+        tip: "⚠️ Preposiciones fijas: on the border between A and B | on the south coast of | on my way to work | to the east of."
+      },
+      {
+        num: 8,
+        title: "Top 25 Verbos Irregulares que Tenés que Saber Sí o Sí",
+        rule: "Los 25 verbos con mayor probabilidad de aparecer en el examen escrito (infinitivo → pasado → participio):",
+        bad: "be (was/were, been) · buy (bought, bought) · come (came, come) · do (did, done) · drink (drank, drunk) · drive (drove, driven)",
+        ok: "eat (ate, eaten) · get (got, got) · give (gave, given) · go (went, gone/been) · have (had, had) · learn (learnt, learnt) · leave (left, left) · make (made, made) · meet (met, met) · read (read, read) · ride (rode, ridden) · see (saw, seen) · sleep (slept, slept) · spend (spent, spent) · swim (swam, swum) · take (took, taken) · teach (taught, taught) · win (won, won) · write (wrote, written)",
+        tip: "💡 Leé la lista dos veces antes de entrar al examen."
+      }
+    ],
+    templates: [
+      {
+        id: "trip",
+        name: "Opción 1: Un viaje solo (Travelling alone)",
+        tag: "Recomendada",
+        desc: "Fácil de memorizar. Integra pasado simple, conectores de secuencia y vocabulario de viajes (U5 + U6).",
+        intro: "Recently, I did something for the first time: I travelled alone to another city. I have never travelled without my family before, so I was very nervous.",
+        body: "First, I bought my bus ticket online and packed my bag. Then I arrived at the station early in the morning. At first, I felt lost, but a friendly person helped me find the platform. After that, I got on the bus and listened to music. Suddenly, the bus stopped because there was a lot of traffic. However, the driver found a quicker way. Next, we arrived at our destination three hours later.",
+        end: "Finally, I met my best friend at the hotel. It was the most exciting journey of my life and I felt very proud of myself!"
+      },
+      {
+        id: "food",
+        name: "Opción 2: Probar sushi / comida nueva (Trying a new food)",
+        tag: "Popular",
+        desc: "Ideal si querés escribir sobre gastronomía. Usa pasado simple, adjetivos comparativos y presente perfecto.",
+        intro: "Last summer, I did something for the first time: I tried Japanese sushi. I have never eaten raw fish before, so I was a bit scared.",
+        body: "First, my friends invited me to a popular restaurant in the city centre. Then the waiter brought a large plate with different types of sushi. At first, I didn't want to touch it because it looked very strange, but my friend told me to try a small piece. After that, I took some sushi with chopsticks. Suddenly, I dropped it on the table! However, everyone laughed and I tried again. Next, I drank a glass of cold water and tasted another piece.",
+        end: "Finally, I finished everything on my plate. It was much better than I expected and now it is one of my favourite dishes!"
+      },
+      {
+        id: "drive",
+        name: "Opción 3: Aprender a manejar (Driving a car)",
+        tag: "Efectiva",
+        desc: "Alineada con el vocabulario de Life Events (U5) y conectores temporales.",
+        intro: "Two months ago, I had an important experience: I drove a car for the first time. I have never driven before, so my hands were shaking.",
+        body: "First, my father took me to a quiet street outside the city. Then he explained the pedals and the steering wheel to me. At first, it was very difficult because I couldn't change gears smoothly, but my father told me to stay calm. After that, I started the engine and drove slowly along the road. Suddenly, a cat ran across the street and I stopped immediately! However, nothing bad happened. Next, I drove around the block two more times.",
+        end: "In the end, I parked the car without any problems. It was the best feeling in the world and I am going to pass my driving test next week!"
+      }
+    ],
+    // Los IDs de los 30 ejercicios más representativos del examen escrito
+    highYieldIds: [
+      "past-1", "past-2", "past-3", "past-4", "past-7", "past-10", "past-11", "past-21",
+      "wh-1", "wh-5", "wh-8", "time-1", "time-3", "time-4",
+      "pp-1", "pp-2", "pp-4", "pp-9", "contrast-1", "contrast-2", "contrast-3", "contrast-8",
+      "comp-1", "comp-2", "comp-3", "comp-5", "comp-8", "comp-20", "comp-21",
+      "travel-1", "travel-3", "travel-4", "travel-6",
+      "future-1", "future-2", "future-3", "future-4", "future-7", "future-18",
+      "pronouns-1", "pronouns-2", "pronouns-4", "pronouns-5", "pronouns-11", "pronouns-21"
+    ]
+  };
+
   window.DATA = D;
 })();
 

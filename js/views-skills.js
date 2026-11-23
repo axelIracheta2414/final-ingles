@@ -88,8 +88,29 @@
       h("table", { class: "mini" }, M.notes.map(n => h("tr", {}, h("th", {}, n[0]), h("td", {}, n[1])))),
       h("button", { class: "btn small", onclick: () => U.speak([M.intro, M.body, M.end].join(" "), 0.9) }, "🔊 Escuchar el modelo"));
 
+    const loadTemplate = (tpl) => {
+      st.intro = tpl.intro; st.body = tpl.body; st.end = tpl.end;
+      if (areas.intro) areas.intro.value = tpl.intro;
+      if (areas.body) areas.body.value = tpl.body;
+      if (areas.end) areas.end.value = tpl.end;
+      S.save();
+      refresh();
+      U.toast("¡Plantilla cargada en el editor!");
+    };
+
+    const templateBar = h("section", { class: "card", style: "border-left:4px solid var(--good);margin-bottom:14px;" },
+      h("h3", { style: "margin:0 0 6px;" }, "⚡ Plantillas Salvavidas A2 (Listas para el Examen)"),
+      h("p", { class: "muted", style: "margin:0 0 10px;" }, "Tocá una plantilla para cargarla automáticamente en las 3 cajas del editor, memorizarla y adaptarla:"),
+      h("div", { class: "chips" },
+        D.sprint.templates.map(tpl => h("button", {
+          class: "chip on",
+          type: "button",
+          onclick: () => loadTemplate(tpl)
+        }, "📋 " + tpl.name))));
+
     root.replaceChildren(h("h1", {}, "Taller de writing · A first-time experience"),
       h("p", { class: "muted" }, "Estructura guiada, conectores clickeables y autoevaluación. Se guarda automáticamente."),
+      templateBar,
       h("div", { class: "row" }, h("button", { class: "btn", onclick: () => { modelBox.hidden = !modelBox.hidden; } }, "📖 Ver / ocultar ejemplo modelo"),
         h("button", { class: "btn ghost", onclick: () => { navigator.clipboard && navigator.clipboard.writeText(full()).then(() => U.toast("Texto copiado")); } }, "Copiar texto"),
         h("button", { class: "btn ghost danger", onclick: () => { if (confirm("¿Borrar tu texto?")) { st.intro = st.body = st.end = ""; Object.values(areas).forEach(a => a.value = ""); S.save(); refresh(); } } }, "Limpiar")),
@@ -97,28 +118,61 @@
       h("div", { class: "writelayout" }, h("div", {}, stepEls, stats, checklist), bank),
       h("button", { class: "fab", type: "button", "aria-label": "Abrir banco de conectores", onclick: () => bank.classList.toggle("open") }, "🔗 Conectores"));
     bank.prepend(h("button", { class: "btn small sheetclose", type: "button", onclick: () => bank.classList.remove("open") }, "Cerrar ✕"));
+
+    const qTpl = U.query().tpl;
+    if (qTpl) {
+      const found = D.sprint.templates.find(t => t.id === qTpl);
+      if (found) setTimeout(() => loadTemplate(found), 50);
+    }
+
     refresh();
   };
 
   /* ---------- Simulacro escrito ---------- */
   V.exam = function (root) {
-    let minutes = 60;
+    const q = U.query();
+    let minutes = q.quick === "1" ? 15 : 60;
     const hist = S.state.exams;
     function setup() {
-      root.replaceChildren(h("h1", {}, "Simulacro de examen escrito"),
+      root.replaceChildren(
+        h("div", { class: "row between" },
+          h("h1", {}, minutes <= 15 ? "⏱ Mini-Simulacro Exprés (15 min)" : "Simulacro de examen escrito"),
+          minutes <= 15 ? h("span", { class: "pill" }, "Modo Rindo Mañana") : null),
         h("section", { class: "card" },
-          h("ul", { class: "plain" }, h("li", {}, h("b", {}, "Grammar (20): "), "Past simple + wh-, Present perfect vs past, comparatives/superlatives, futuro."),
-            h("li", {}, h("b", {}, "Vocabulary (14): "), "verbos irregulares, life events, travel phrases, indefinite pronouns."),
+          minutes <= 15 ? h("ul", { class: "plain" },
+            h("li", {}, h("b", {}, "Grammar (10 preguntas): "), "Past simple + wh-, Present perfect vs past, comparatives/superlatives, futuro."),
+            h("li", {}, h("b", {}, "Vocabulary (5 preguntas): "), "verbos irregulares, life events, travel phrases, indefinite pronouns."),
+            h("li", {}, h("b", {}, "Writing: "), "a first-time experience (80 puntos objetivos + 20 de writing = 100)."))
+          : h("ul", { class: "plain" },
+            h("li", {}, h("b", {}, "Grammar (20 preguntas): "), "Past simple + wh-, Present perfect vs past, comparatives/superlatives, futuro."),
+            h("li", {}, h("b", {}, "Vocabulary (14 preguntas): "), "verbos irregulares, life events, travel phrases, indefinite pronouns."),
             h("li", {}, h("b", {}, "Writing: "), "a first-time experience (80 puntos objetivos + 20 de writing = 100).")),
           h("p", { class: "muted" }, "Sin pistas ni feedback hasta el final. Si se acaba el tiempo, se entrega solo."),
-          h("div", { class: "chips" }, [45, 60, 90].map(m => h("button", { class: "chip" + (m === minutes ? " on" : ""), onclick: () => { minutes = m; setup(); } }, m + " min"))),
+          h("div", { class: "chips" }, [15, 30, 45, 60].map(m => h("button", { class: "chip" + (m === minutes ? " on" : ""), onclick: () => { minutes = m; setup(); } }, m + " min"))),
           h("button", { class: "btn primary big", onclick: start }, "Comenzar examen")),
         hist.length ? h("section", { class: "card" }, h("h3", {}, "Historial"), h("table", { class: "mini" }, h("tr", {}, ["Fecha", "Grammar", "Vocab", "Writing", "Total"].map(x => h("th", {}, x))),
-          hist.slice().reverse().slice(0, 8).map(e => h("tr", {}, [new Date(e.date).toLocaleString("es-AR", { dateStyle: "short", timeStyle: "short" }), e.g + "/20", e.v + "/14", e.w + "/20", h("b", {}, e.total + "/100")].map(c => h("td", {}, c)))))) : null);
+          hist.slice().reverse().slice(0, 8).map(e => h("tr", {}, [new Date(e.date).toLocaleString("es-AR", { dateStyle: "short", timeStyle: "short" }), e.g + "/" + (e.gMax || 20), e.v + "/" + (e.vMax || 14), e.w + "/20", h("b", {}, e.total + "/100")].map(c => h("td", {}, c)))))) : null);
     }
 
     function build() {
       const by = (pred, n) => U.shuffle(D.ex.filter(pred)).slice(0, n);
+      if (minutes <= 15) {
+        const g = U.shuffle([
+          ...by(x => x.sec === "g" && x.unit === 5, 3),
+          ...by(x => x.topic === "pp" || x.topic === "contrast", 2),
+          ...by(x => x.topic === "comp", 2),
+          ...by(x => x.topic === "future", 3)
+        ]);
+        const verbQ = U.shuffle(Pool.gen);
+        const v = U.shuffle([
+          ...verbQ.filter(x => x.id.startsWith("vp:")).slice(0, 1),
+          ...verbQ.filter(x => x.id.startsWith("vpp:")).slice(0, 1),
+          ...by(x => x.topic === "events", 1),
+          ...by(x => x.topic === "travel", 1),
+          ...by(x => x.topic === "pronouns", 1)
+        ]);
+        return { g, v };
+      }
       const g = U.shuffle([...by(x => x.sec === "g" && x.unit === 5, 6), ...by(x => x.topic === "pp" || x.topic === "contrast", 5), ...by(x => x.topic === "comp", 4), ...by(x => x.topic === "future", 5)]);
       const verbQ = U.shuffle(Pool.gen);
       const v = U.shuffle([...verbQ.filter(x => x.id.startsWith("vp:")).slice(0, 2), ...verbQ.filter(x => x.id.startsWith("vpp:")).slice(0, 2),
@@ -180,7 +234,7 @@
       const gA = answers.filter(a => a.sec === "Grammar"), vA = answers.filter(a => a.sec === "Vocabulary");
       const gOk = gA.filter(a => a.ok).length, vOk = vA.filter(a => a.ok).length;
       const wr = rate(text), obj = Math.round(80 * (gOk + vOk) / answers.length), total = obj + wr.w;
-      S.state.exams.push({ date: Date.now(), g: gOk, v: vOk, w: wr.w, total, secs }); S.save();
+      S.state.exams.push({ date: Date.now(), g: gOk, gMax: gA.length, v: vOk, vMax: vA.length, w: wr.w, total, secs }); S.save();
       const show = a => a.ans == null ? "(sin responder)" : a.item.type === "err" ? U.errTokens(a.item)[a.ans] : a.ans;
       const wrong = answers.filter(a => !a.ok);
       root.replaceChildren(
